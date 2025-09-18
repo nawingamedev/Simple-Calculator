@@ -8,7 +8,6 @@ public class CalculatorManager : MonoBehaviour
     private string inputList;
     public void GetUserInput(string value)
     {
-        Debug.Log($"Calc In {value}");
         ShowText.text += value;
         inputList += value;
     }
@@ -29,7 +28,7 @@ public class CalculatorManager : MonoBehaviour
         string number = "";
         List<double> numbers = new();
         List<char> operators = new();
-
+        //Separating Operater and Numbers and saving on a list
         foreach (char c in value)
         {
             if (char.IsDigit(c) || c == '.')
@@ -47,17 +46,7 @@ public class CalculatorManager : MonoBehaviour
         {
             numbers.Add(double.Parse(number));
         }
-        string test = "";
-        for (int i = 0; i < numbers.Count; i++) {
-            test += numbers[i];
-        }
-        Debug.Log($"Calc numbers {test}");
-        test = "";
-        for (int i = 0; i < operators.Count; i++)
-        {
-            test += operators[i];
-        }
-        Debug.Log($"Calc operators {test}");
+        //Prioritising Operator based on DMAS
         for (int i = 0; i < operators.Count; i++)
         {
             if (operators[i] == 'X' || operators[i] == '/')
